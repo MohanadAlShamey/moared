@@ -11,6 +11,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -58,7 +59,10 @@ class TeamResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name_ar')->label('الاسم'),
+                Tables\Columns\TextColumn::make('job_ar')->label('الوظيفة'),
+                Tables\Columns\TextColumn::make('email')->label('البريد الإلكتروني'),
+                SpatieMediaLibraryImageColumn::make('الصورة')->collection('teams'),
             ])
             ->filters([
                 //

@@ -38,8 +38,9 @@ class SettingResource extends Resource
                             Forms\Components\TextInput::make('name_ar')->label('اسم الموقع')->required(),
 
 
-                            Forms\Components\TextInput::make('address_ar')->label('العنوان'),
 
+                            Forms\Components\TextInput::make('address_ar')->label('العنوان'),
+                            Forms\Components\RichEditor::make('info_ar')->label('من نحن'),
 
 
                         ]),
@@ -49,7 +50,7 @@ class SettingResource extends Resource
 
 
                             Forms\Components\TextInput::make('address_en')->label('العنوان'),
-
+                            Forms\Components\RichEditor::make('info_en')->label('من نحن'),
 
                         ]),
 
@@ -59,7 +60,7 @@ class SettingResource extends Resource
 
                             Forms\Components\TextInput::make('address_tr')->label('العنوان'),
 
-
+                            Forms\Components\RichEditor::make('info_tr')->label('من نحن'),
                         ]),
 
                         Forms\Components\Tabs\Tab::make('وسائل التواصل')->schema([
