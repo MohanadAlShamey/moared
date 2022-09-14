@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Theme\AboutController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Theme\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/welcome', function () {
+    return view('theme.index');
 });
+Route::name('theme.')->middleware('locale')->group(function(){
+    Route::get('/',[IndexController::class,'index'])->name('index');
+    Route::get('/about',[AboutController::class,'index'])->name('about');
+
+});
+
 
 //Route::group(['middleware' =>])

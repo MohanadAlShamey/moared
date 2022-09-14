@@ -70,8 +70,8 @@ class SettingResource extends Resource
                             Forms\Components\TextInput::make('instagram')->label('صفحة إنستغرام')->url(),
                             Forms\Components\TextInput::make('youtube')->label('قناة يوتيوب')->url(),
                             Forms\Components\TextInput::make('linkedin')->label('حساب لينكد إن')->url(),
-                            Forms\Components\TextInput::make('email')->label('بريد إلكتروني رئيسي')->url(),
-                            Forms\Components\TextInput::make('sub_email')->label('بريد إلكتروني ثانوي')->url(),
+                            Forms\Components\TextInput::make('email')->label('بريد إلكتروني رئيسي')->email(),
+                            Forms\Components\TextInput::make('sub_email')->label('بريد إلكتروني ثانوي')->email(),
 
                             Forms\Components\Textarea::make('map')->label('كود الخريطة')
 

@@ -15,12 +15,12 @@ class Testimonial extends Model implements HasMedia
 
     public function getNameAttribute(): string
     {
-        return $this->name . '_' . app()->getLocale();
+        return $this->{'name_' . app()->getLocale()};
     }
 
     public function getInfoAttribute(): string
     {
-        return $this->info . '_' . app()->getLocale();
+        return $this->{'info_' . app()->getLocale()};
     }
 
     public function getImgAttribute(){

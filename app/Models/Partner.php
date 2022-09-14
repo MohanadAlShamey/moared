@@ -15,7 +15,7 @@ class Partner extends Model implements HasMedia
 
     public function getNameAttribute(): string
     {
-        return $this->name.'_'.app()->getLocale();
+        return $this->{'name_'.app()->getLocale()};
     }
 
     public function getImgAttribute(){

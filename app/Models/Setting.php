@@ -15,11 +15,17 @@ class Setting extends Model implements HasMedia
 
     public function getNameAttribute(): string
     {
-        return $this->name . '_' . app()->getLocale();
+        return $this->{'name_' . app()->getLocale()};
     }
 
     public function getAddressAttribute(): string
     {
-        return $this->address . '_' . app()->getLocale();
+        return $this->{'address_' . app()->getLocale()};
+    }
+    public function getImgAttribute(){
+        if($this->hasMedia('settings')){
+            return $this->getFirstMediaUrl('settings');
+        }
+
     }
 }

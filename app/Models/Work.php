@@ -16,12 +16,12 @@ class Work extends Model implements HasMedia
 
     public function getTitleAttribute(): string
     {
-        return $this->title.'_'.app()->getLocale();
+        return $this->{'title_'.app()->getLocale()};
     }
 
     public function getInfoAttribute(): string
     {
-        return $this->info.'_'.app()->getLocale();
+        return $this->{'info_'.app()->getLocale()}??'';
     }
 
     public function part(): BelongsTo
