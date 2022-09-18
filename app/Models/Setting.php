@@ -28,4 +28,11 @@ class Setting extends Model implements HasMedia
         }
 
     }
+    
+    public function getInfoAttribute(): string
+    {
+        return $this->{"info_".app()->getLocale()};
+
+    }
+
 }

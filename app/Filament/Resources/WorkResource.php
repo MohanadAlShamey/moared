@@ -33,6 +33,8 @@ class WorkResource extends Resource
                 Forms\Components\Section::make(self::$pluralLabel)->schema([
                     SpatieMediaLibraryFileUpload::make('img')->collection('works')->label('الصورة'),
                     Forms\Components\BelongsToSelect::make('part_id')->relationship('part', 'name_ar')->label('المجموعة'),
+                    Forms\Components\TextArea::make('video')->nullable()->label('فيديو من يوتيوب'),
+
                     Forms\Components\Tabs::make('works')->tabs([
 
                         Forms\Components\Tabs\Tab::make('العربية')->schema([

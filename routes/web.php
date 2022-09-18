@@ -1,8 +1,12 @@
 <?php
 
 use App\Http\Controllers\Theme\AboutController;
+use App\Http\Controllers\Theme\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Theme\IndexController;
+use App\Http\Controllers\Theme\NewsController;
+use App\Http\Controllers\Theme\PartController;
+use App\Http\Controllers\Theme\WorksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +22,16 @@ use App\Http\Controllers\Theme\IndexController;
 Route::get('/welcome', function () {
     return view('theme.index');
 });
+Route::get('/languages/{lang}',[IndexController::class,'change_lang'])->name('change.lang');
 Route::name('theme.')->middleware('locale')->group(function(){
     Route::get('/',[IndexController::class,'index'])->name('index');
-    Route::get('/about',[AboutController::class,'index'])->name('about');
+    
+    Route::resource('/abouts',AboutController::class)->only('index');
+    // Route::resource('/contacts',ContactController::class)->only('index');
+    Route::resource('/posts',NewsController::class)->only(['index','show']);
+    Route::resource('/works',WorksController::class)->only('index','show');
+    Route::resource('/parts',PartController::class)->only('show');
+ 
 
 });
 

@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="{{app()->getLocale()}}" dir="{{app()->getLocale()=='ar'?'rtl':'ltr'}}">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Home</title>
+    @if(app()->getLocale()=='ar')
     <link rel="stylesheet" href="{{asset('assets/bootstrap/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{asset('assets/bootstrap/css/bootstrap-rtl.min.css')}}">
+    @else
+    <link rel="stylesheet" href="{{asset('assets/bootstrap/css/bootstrap.min.css')}}">
+   @endif
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cairo:200,300,400,500,600,700,800,900&amp;subset=arabic,latin-ext&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400,400i,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400">
@@ -21,18 +27,20 @@
 </head>
 
 <body>
-
+@php
+$parts=App\Models\Part::limit(12)->latest()->get();
+@endphp
     {{-- Top Header --}}
     <section class="top-hero pt-3 pb-1 text-white">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-3 text-center d-flex d-xl-flex flex-row justify-content-center pt-2"><a href="#">
+                <div class="col-sm-12 col-md-12 col-lg-3 text-center d-flex d-xl-flex flex-row justify-content-center pt-2"><a href="tel:{{setting()->phone}}">
                         <p class="d-xl-flex align-items-xl-center text-white">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" class="mx-2">
                                 <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
                                 <path d="M511.2 387l-23.25 100.8c-3.266 14.25-15.79 24.22-30.46 24.22C205.2 512 0 306.8 0 54.5c0-14.66 9.969-27.2 24.22-30.45l100.8-23.25C139.7-2.602 154.7 5.018 160.8 18.92l46.52 108.5c5.438 12.78 1.77 27.67-8.98 36.45L144.5 207.1c33.98 69.22 90.26 125.5 159.5 159.5l44.08-53.8c8.688-10.78 23.69-14.51 36.47-8.975l108.5 46.51C506.1 357.2 514.6 372.4 511.2 387z"></path>
                             </svg>{{lang('call_us')}} :{{setting()->phone}}</p>
                     </a></div>
-                <div class="col-sm-12 col-md-12 col-lg-3 text-center d-flex d-xl-flex flex-row justify-content-center pt-2"><a href="#">
+                <div class="col-sm-12 col-md-12 col-lg-3 text-center d-flex d-xl-flex flex-row justify-content-center pt-2"><a  href="mailto:{{setting()->email}}">
                         <p class="d-xl-flex align-items-xl-center text-white"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" class="mx-2">
                                 <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
                                 <path d="M464 64C490.5 64 512 85.49 512 112C512 127.1 504.9 141.3 492.8 150.4L275.2 313.6C263.8 322.1 248.2 322.1 236.8 313.6L19.2 150.4C7.113 141.3 0 127.1 0 112C0 85.49 21.49 64 48 64H464zM217.6 339.2C240.4 356.3 271.6 356.3 294.4 339.2L512 176V384C512 419.3 483.3 448 448 448H64C28.65 448 0 419.3 0 384V176L217.6 339.2z"></path>
@@ -43,7 +51,7 @@
                                 <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
                                 <path d="M512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM51.68 295.1L83.41 301.5C91.27 303.1 99.41 300.6 105.1 294.9L120.5 279.5C132 267.1 151.6 271.1 158.9 285.8L168.2 304.3C172.1 313.9 182.8 319.1 193.5 319.1C208.7 319.1 219.6 305.4 215.2 290.8L209.3 270.9C204.6 255.5 216.2 240 232.3 240H234.6C247.1 240 260.5 233.3 267.9 222.2L278.6 206.1C284.2 197.7 283.9 186.6 277.8 178.4L261.7 156.9C251.4 143.2 258.4 123.4 275.1 119.2L292.1 114.1C299.6 113.1 305.7 107.8 308.6 100.6L324.9 59.69C303.4 52.12 280.2 48 255.1 48C141.1 48 47.1 141.1 47.1 256C47.1 269.4 49.26 282.5 51.68 295.1L51.68 295.1zM450.4 300.4L434.6 304.9C427.9 306.7 420.8 304 417.1 298.2L415.1 295.1C409.1 285.7 398.7 279.1 387.5 279.1C376.4 279.1 365.1 285.7 359.9 295.1L353.8 304.6C352.4 306.8 350.5 308.7 348.2 309.1L311.1 330.1C293.9 340.2 286.5 362.5 294.1 381.4L300.5 393.8C309.1 413 331.2 422.3 350.1 414.9L353.5 413.1C363.6 410.2 374.8 411.8 383.5 418.1L385 419.2C422.2 389.7 449.1 347.8 459.4 299.7C456.4 299.4 453.4 299.6 450.4 300.4H450.4zM156.1 367.5L188.1 375.5C196.7 377.7 205.4 372.5 207.5 363.9C209.7 355.3 204.5 346.6 195.9 344.5L163.9 336.5C155.3 334.3 146.6 339.5 144.5 348.1C142.3 356.7 147.5 365.4 156.1 367.5V367.5zM236.5 328.1C234.3 336.7 239.5 345.4 248.1 347.5C256.7 349.7 265.4 344.5 267.5 335.9L275.5 303.9C277.7 295.3 272.5 286.6 263.9 284.5C255.3 282.3 246.6 287.5 244.5 296.1L236.5 328.1zM321.7 120.8L305.7 152.8C301.7 160.7 304.9 170.4 312.8 174.3C320.7 178.3 330.4 175.1 334.3 167.2L350.3 135.2C354.3 127.3 351.1 117.6 343.2 113.7C335.3 109.7 325.6 112.9 321.7 120.8V120.8z"></path>
                             </svg>{{lang('lang')}}</button>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="#">{{lang('en')}}</a><a class="dropdown-item" href="#">{{lang('ar')}}</a><a class="dropdown-item" href="#">{{lang('tr')}}</a></div>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="{{route('change.lang',['lang'=>'en'])}}">{{lang('en')}}</a><a class="dropdown-item" href="{{route('change.lang',['lang'=>'ar'])}}">{{lang('ar')}}</a><a class="dropdown-item" href="{{route('change.lang',['lang'=>'tr'])}}">{{lang('tr')}}</a></div>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-3 text-center d-flex d-xl-flex flex-row justify-content-center">
@@ -54,10 +62,11 @@
                         @if(setting()->instagram)
                         <a class="link-top px-2" href="{{setting()->instagram}}"><i class="fab fa-instagram fa-lg" data-bss-hover-animate="wobble"></i></a>
                         @endif
-                        @if(setting()->instagram)
-                        <a class="link-top px-2" href="#"><i class="fab fa-google-plus-g fa-lg" 
+                        @if(setting()->twitter)
+                        <a class="link-top px-2" href="{{setting()->twitter}}"><i class="fa fa-twitter fa-lg" 
                             data-bss-hover-animate="wobble"></i></a>
                             @endif
+                            
                             @if(setting()->linkedin)
                         <a class="link-top px-2" href="{{setting()->linkedin}}"><i class="fab fa-linkedin-in fa-lg" data-bss-hover-animate="wobble"></i></a>
                         @endif
@@ -76,20 +85,34 @@
    <div class="container-fluid">
             <nav class="navbar navbar-light navbar-expand-xl">
                 <div class="container">
-                    <div class="d-xl-flex align-items-center align-content-center justify-content-xl-center px-1 mx-2 border-right"><a class="navbar-brand" data-bss-hover-animate="wobble" href="index.html" style="background: url(&quot;assets/img/Logo.svg&quot;) center / contain no-repeat;width: 75px;"></a></div><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div class="d-xl-flex align-items-center align-content-center justify-content-xl-center px-1 mx-2 @if(app()->getLocale()!='ar') border-right @else border-left @endif"><a class="navbar-brand" data-bss-hover-animate="wobble" href="{{route('theme.index')}}" style="background: url({{setting()->img}}) center / contain no-repeat;width: 75px;"></a></div><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="navbar-nav mx-auto">
-                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="500"><a class="nav-link nav-link" href="index.html">{{lang('home')}}</a></li>
-                            <li class="nav-item dropdown px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="50"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">{{lang('service')}}</a>
-                                <div class="dropdown-menu"><a class="dropdown-item" href="#">__itemOne </a><a class="dropdown-item" href="#">__itemTwo </a><a class="dropdown-item" href="#">__ItemThree </a></div>
+                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="500"><a class="nav-link nav-link" href="{{route('theme.index')}}">{{lang('home')}}</a></li>
+
+
+                           
+                            <li class="nav-item dropdown px-3" data-aos="fade-left" data-aos-duration="450" 
+                            data-aos-delay="50"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">{{lang('service')}}</a>
+                          
+                                <div class="dropdown-menu">
+                                    @forelse($parts as $part)
+                                    <a class="dropdown-item" href="{{route('theme.parts.show',$part)}}">{{$part->name}} </a>
+                                    @empty
+                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">No Data </a>
+                                  
+                                    {{-- <a class="dropdown-item" href="#">__itemTwo </a>
+                                    <a class="dropdown-item" href="#">__ItemThree </a> --}}
+                                    @endforelse
+                                
+                                </div>
+                                
                             </li>
-                            <li class="nav-item dropdown px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="100"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">{{lang('product')}}</a>
-                                <div class="dropdown-menu"><a class="dropdown-item" href="#">__itemOne </a><a class="dropdown-item" href="#">__itemTwo </a><a class="dropdown-item" href="#">__ItemThree </a></div>
-                            </li>
-                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="150"><a class="nav-link" href="#">{{lang('blog')}}</a></li>
-                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a class="nav-link" href="#">{{lang('news')}}</a></li>
-                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="250"><a class="nav-link" href="about.html">{{lang('about_us')}}</a></li>
-                            <li class="nav-item" data-aos="zoom-in" data-aos-delay="350"><a class="nav-link text-uppercase px-4 donate" href="contact.html">{{lang('call_us')}}</a></li>
+                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a class="nav-link" href="{{route('theme.works.index')}}">{{lang('product')}}</a></li>
+                                                     
+                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a class="nav-link" href="{{route('theme.posts.index')}}">{{lang('news')}}</a></li>
+                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="250"><a class="nav-link" href="{{route('theme.abouts.index')}}">{{lang('about_us')}}</a></li>
+                            {{-- <li class="nav-item" data-aos="zoom-in" data-aos-delay="350"><a class="nav-link text-uppercase px-4 donate" href="{{route('theme.contacts.index')}}">{{lang('call_us')}}</a></li> --}}
                         </ul>
                     </div>
                 </div>
@@ -140,7 +163,7 @@
                 <div class="row text-center pt-3">
                     <div class="col-12 col-lg-2 d-flex flex-column justify-content-center">
                         <div class="d-flex flex-column justify-content-center align-items-center p-2">
-                            <div class="d-flex flex-row justify-content-start align-items-center p-2"><a href="#">&nbsp;<img src={{setting()->img}} width="170px"></a></div>
+                            <div class="d-flex flex-row justify-content-start align-items-center p-2"><a href="{{route('theme.index')}}">&nbsp;<img src={{asset('assets/img/Logo-white-text.svg')}} width="170px"></a></div>
                         </div>
                     </div>
                     {{-- <div class="col-12 col-lg-2">
@@ -153,21 +176,31 @@
                         </ul>
                     </div> --}}
                     <div class="col-12 col-lg-2">
-                        <h5>Our Company</h5>
+                        <h5>{{setting()->name}}</h5>
                         <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Company Information<br></a></li>
-                            <li><a href="#">Reviews</a></li>
-                            <li><a href="#">Contacts</a></li>
+                            <li><a href="{{route('theme.abouts.index')}}">{{lang('about_us')}}</a></li>
+                            <li><a href="{{route('theme.index')}}">{{lang('service')}}<br></a></li>
+                            <li><a href="{{route('theme.posts.index')}}">{{lang('news')}}</a></li>
+                            {{-- <li><a href="{{route('theme.contacts.index')}}">{{lang('call_us')}}</a></li> --}}
                         </ul>
                     </div>
                     <div class="col-3 col-lg-2 align-self-center mx-auto">
-                        <div class="d-flex flex-row justify-content-center align-items-center"><iframe allowfullscreen="" frameborder="0" src="https://cdn.bootstrapstudio.io/placeholders/map.html" class="map" height="400"></iframe></div>
+                        <div  class="d-flex flex-row justify-content-center align-items-center">
+                            <div class="embed-responsive embed-responsive-1by1 rounded h-100">
+                                {!!setting()->map!!}
+                            </div>
+                          
+                        </div>
                     </div>
                     <div class="col-12 col-lg-3 social-networks">
                         <div class="d-flex flex-column justify-content-center align-items-center contact-dev">
-                            <div><a class="facebook" href="{{setting()->face}}"><i class="fa fa-facebook fa-lg"></i></a><a class="twitter" href="{{setting()->twitter}}"><i class="fa fa-twitter fa-lg"></i></a><a class="google fa-lg" href="{{setting()->youtube}}"><i class="fa fa-youtube fa-lg"></i></a><a class="linkedin fa-lg" href="{{setting()->linkedin}}"><i class="fa fa-linkedin fa-lg"></i></a></div>
-                            <div class="mt-4"><a class="contact-us" href="contact.html">contact us</a></div>
+                            <div><a class="facebook" href="{{setting()->face}}"><i class="fa fa-facebook fa-lg"></i></a><a class="twitter" href="{{setting()->twitter}}"><i class="fa fa-twitter fa-lg"></i></a><a class="google fa-lg" href="{{setting()->youtube}}"><i class="fa fa-youtube fa-lg"></i></a>
+                                
+                                <a class="linkedin fa-lg" href="{{setting()->linkedin}}"><i class="fa fa-linkedin fa-lg"></i>
+                                </a>
+                            
+                            </div>
+                            {{-- <div class="mt-4"><a class="contact-us" href="{{route('theme.contacts.index')}}">{{lang('call_us')}}</a></div> --}}
                             <div class="mt-2 pt-5"><a href="#" onclick="&quot;goTo(0);return false;&quot;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-64 0 512 512" width="1em" height="1em" fill="currentColor" data-bss-hover-animate="bounce" class="fa-2x">
                                         <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
                                         <path d="M54.63 246.6L192 109.3l137.4 137.4C335.6 252.9 343.8 256 352 256s16.38-3.125 22.62-9.375c12.5-12.5 12.5-32.75 0-45.25l-160-160c-12.5-12.5-32.75-12.5-45.25 0l-160 160c-12.5 12.5-12.5 32.75 0 45.25S42.13 259.1 54.63 246.6zM214.6 233.4c-12.5-12.5-32.75-12.5-45.25 0l-160 160c-12.5 12.5-12.5 32.75 0 45.25s32.75 12.5 45.25 0L192 301.3l137.4 137.4C335.6 444.9 343.8 448 352 448s16.38-3.125 22.62-9.375c12.5-12.5 12.5-32.75 0-45.25L214.6 233.4z"></path>
@@ -175,12 +208,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="row footer-copyright">
-                    <div class="col">
-                        <p>© 2022 Copyright Mada company | For Programing And Media Services</p>
-                    </div>
-                </div>
+             
+                
             </div>
+            <div class=" footer-copyright">
+                    
+                <p><a style="font-size:bold " href="https://mada-company.com">© 2022 Copyright Mada company |For Programing And Media Services </a></p>
+           
+        
+      </div>
         </footer>
     </section>
 
