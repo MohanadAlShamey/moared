@@ -16,6 +16,7 @@ use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
+use Filament\Forms\Components\Textarea;
 
 class PostResource extends Resource
 {
@@ -33,7 +34,7 @@ class PostResource extends Resource
           Forms\Components\Section::make(self::$pluralLabel)->schema([
               SpatieMediaLibraryFileUpload::make('img')->collection('posts')->label('الصورة'),
               Forms\Components\BelongsToSelect::make('category_id')->relationship('category','name_ar')->label('القسم'),
-              Forms\Components\TextArea::make('video')->nullable()->label('فيديو من يوتيوب'),
+              TextArea::make('video')->nullable()->label('فيديو من يوتيوب'),
               Forms\Components\Tabs::make('posts')->tabs([
 
                   Forms\Components\Tabs\Tab::make('العربية')->schema([
