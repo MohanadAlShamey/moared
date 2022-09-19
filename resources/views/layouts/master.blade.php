@@ -67,7 +67,7 @@ $parts=App\Models\Part::limit(12)->latest()->get();
                             </li>
                             <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a class="nav-link" href="{{route('theme.works.index')}}">{{lang('product')}}</a></li>
 
-                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a class="nav-link" href="{{route('theme.posts.index')}}">{{lang('news')}}</a></li>
+                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a class="nav-link" href="{{route('theme.posts.index')}}">{{lang('blog')}}</a></li>
                             <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="250"><a class="nav-link" href="{{route('theme.abouts.index')}}">{{lang('about_us')}}</a></li>
                             {{-- <li class="nav-item" data-aos="zoom-in" data-aos-delay="350"><a class="nav-link text-uppercase px-4 donate" href="{{route('theme.contacts.index')}}">{{lang('call_us')}}</a></li> --}}
                             <li class="nav-item dropdown px-3" data-aos="fade-left" data-aos-duration="450"
@@ -247,15 +247,13 @@ $parts=App\Models\Part::limit(12)->latest()->get();
                         <ul>
                             <li><a href="{{route('theme.abouts.index')}}">{{lang('about_us')}}</a></li>
                             <li><a href="{{route('theme.index')}}">{{lang('service')}}<br></a></li>
-                            <li><a href="{{route('theme.posts.index')}}">{{lang('news')}}</a></li>
+                            <li><a href="{{route('theme.posts.index')}}">{{lang('blog')}}</a></li>
                             {{-- <li><a href="{{route('theme.contacts.index')}}">{{lang('call_us')}}</a></li> --}}
                         </ul>
                     </div>
                     <div class="col-3 col-lg-2 align-self-center mx-auto">
                         <div  class="d-flex flex-row justify-content-center align-items-center">
-                            <div class="embed-responsive embed-responsive-1by1 rounded h-100">
-                                {!!setting()->map!!}
-                            </div>
+
 
                         </div>
                     </div>
