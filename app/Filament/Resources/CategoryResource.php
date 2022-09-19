@@ -14,7 +14,7 @@ use Filament\Tables;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
@@ -33,18 +33,18 @@ class CategoryResource extends Resource
                   Forms\Components\Tabs\Tab::make('العربية')->schema([
 
                       Forms\Components\TextInput::make('name_ar')->required()->label('الاسم'),
-                      Forms\Components\RichEditor::make('info_ar')->nullable()->label('الوصف')
+                      TinyEditor::make('info_ar')->nullable()->label('الوصف')
                   ]),
                   Forms\Components\Tabs\Tab::make('الإنكليزية')->schema([
 
                       Forms\Components\TextInput::make('name_en')->required()->label('الاسم'),
-                      Forms\Components\RichEditor::make('info_en')->nullable()->label('الوصف')
+                      TinyEditor::make('info_en')->nullable()->label('الوصف')
                   ]),
 
                   Forms\Components\Tabs\Tab::make('التركية')->schema([
 
                       Forms\Components\TextInput::make('name_tr')->required()->label('الاسم'),
-                      Forms\Components\RichEditor::make('info_tr')->nullable()->label('الوصف')
+                      TinyEditor::make('info_tr')->nullable()->label('الوصف')
                   ]),
 
               ]),

@@ -21,6 +21,11 @@
     <link rel="stylesheet" href="{{asset('assets/fonts/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/fonts/fontawesome5-overrides.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/styles.min.css')}}">
+    <style>
+        .navbar-light .navbar-nav .nav-link{
+            color: white;
+        }
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.css">
@@ -33,7 +38,69 @@ $parts=App\Models\Part::limit(12)->latest()->get();
     {{-- Top Header --}}
     <section class="top-hero pt-3 pb-1 text-white">
         <div class="container">
-            <div class="row">
+            <nav class="navbar navbar-light navbar-expand-xl ">
+                <div class="container">
+                    <div class="d-xl-flex align-items-center align-content-center  justify-content-xl-center px-1 mx-2 ">
+                        <a class="navbar-brand" data-bss-hover-animate="wobble" href="{{route('theme.index')}}"
+                           style="background: url({{setting()->img}}) center / contain no-repeat;"></a></div><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navcol-1">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="500"><a class="nav-link nav-link" href="{{route('theme.index')}}">{{lang('home')}}</a></li>
+
+
+
+                            <li class="nav-item dropdown px-3" data-aos="fade-left" data-aos-duration="450"
+                                data-aos-delay="50"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">{{lang('service')}}</a>
+
+                                <div class="dropdown-menu">
+                                    @forelse($parts as $part)
+                                        <a class="dropdown-item" href="{{route('theme.parts.show',$part)}}">{{$part->name}} </a>
+                                    @empty
+                                        <div class="dropdown-menu"><a class="dropdown-item" href="#">No Data </a>
+
+                                            {{-- <a class="dropdown-item" href="#">__itemTwo </a>
+                                            <a class="dropdown-item" href="#">__ItemThree </a> --}}
+                                            @endforelse
+
+                                        </div>
+
+                            </li>
+                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a class="nav-link" href="{{route('theme.works.index')}}">{{lang('product')}}</a></li>
+
+                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a class="nav-link" href="{{route('theme.posts.index')}}">{{lang('news')}}</a></li>
+                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="250"><a class="nav-link" href="{{route('theme.abouts.index')}}">{{lang('about_us')}}</a></li>
+                            {{-- <li class="nav-item" data-aos="zoom-in" data-aos-delay="350"><a class="nav-link text-uppercase px-4 donate" href="{{route('theme.contacts.index')}}">{{lang('call_us')}}</a></li> --}}
+                            <li class="nav-item dropdown px-3" data-aos="fade-left" data-aos-duration="450"
+                                data-aos-delay="50"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">{{lang('lang')}}
+                                @if(app()->getLocale()=='en')
+                                     <img src="{{asset('assets/img/usa_flag.webp')}}" width="20" class="img-sm" alt="">
+                                    @elseif(app()->getLocale()=='ar')
+                                     <img src="{{asset('assets/img/sa_flag.png')}}" width="20" class="img-sm" alt="">
+                                    @else
+
+                                    <img src="{{asset('assets/img/turkey_flag.png')}}" width="20" class="img-sm" alt="">
+                                    @endif
+
+                                </a>
+
+                                <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{{route('change.lang',['lang'=>'en'])}}">{{lang('en')}}
+                                            <img src="{{asset('assets/img/usa_flag.webp')}}" width="20" class="img-sm" alt="">
+                                        </a></a>
+                                        <a class="dropdown-item" href="{{route('change.lang',['lang'=>'ar'])}}">{{lang('ar')}}
+                                            <img src="{{asset('assets/img/sa_flag.png')}}" width="20" class="img-sm" alt="">
+                                        </a>
+                                        <a class="dropdown-item" href="{{route('change.lang',['lang'=>'tr'])}}">{{lang('tr')}}
+                                            <img src="{{asset('assets/img/turkey_flag.png')}}" width="20" class="img-sm" alt="">
+                                        </a>
+                                        </div>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+           {{-- <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-3 text-center d-flex d-xl-flex flex-row justify-content-center pt-2"><a href="tel:{{setting()->phone}}">
                         <p class="d-xl-flex align-items-xl-center text-white">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" class="mx-2">
                                 <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
@@ -63,16 +130,16 @@ $parts=App\Models\Part::limit(12)->latest()->get();
                         <a class="link-top px-2" href="{{setting()->instagram}}"><i class="fab fa-instagram fa-lg" data-bss-hover-animate="wobble"></i></a>
                         @endif
                         @if(setting()->twitter)
-                        <a class="link-top px-2" href="{{setting()->twitter}}"><i class="fa fa-twitter fa-lg" 
+                        <a class="link-top px-2" href="{{setting()->twitter}}"><i class="fa fa-twitter fa-lg"
                             data-bss-hover-animate="wobble"></i></a>
                             @endif
-                            
+
                             @if(setting()->linkedin)
                         <a class="link-top px-2" href="{{setting()->linkedin}}"><i class="fab fa-linkedin-in fa-lg" data-bss-hover-animate="wobble"></i></a>
                         @endif
                     </div>
                 </div>
-            </div>
+            </div>--}}
         </div>
     </section>
 
@@ -81,7 +148,7 @@ $parts=App\Models\Part::limit(12)->latest()->get();
 
     {{--NavBar --}}
 
-    <section>
+   {{-- <section>
    <div class="container-fluid">
             <nav class="navbar navbar-light navbar-expand-xl">
                 <div class="container">
@@ -91,34 +158,34 @@ $parts=App\Models\Part::limit(12)->latest()->get();
                             <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="500"><a class="nav-link nav-link" href="{{route('theme.index')}}">{{lang('home')}}</a></li>
 
 
-                           
-                            <li class="nav-item dropdown px-3" data-aos="fade-left" data-aos-duration="450" 
+
+                            <li class="nav-item dropdown px-3" data-aos="fade-left" data-aos-duration="450"
                             data-aos-delay="50"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">{{lang('service')}}</a>
-                          
+
                                 <div class="dropdown-menu">
                                     @forelse($parts as $part)
                                     <a class="dropdown-item" href="{{route('theme.parts.show',$part)}}">{{$part->name}} </a>
                                     @empty
                                     <div class="dropdown-menu"><a class="dropdown-item" href="#">No Data </a>
-                                  
-                                    {{-- <a class="dropdown-item" href="#">__itemTwo </a>
-                                    <a class="dropdown-item" href="#">__ItemThree </a> --}}
+
+                                    --}}{{-- <a class="dropdown-item" href="#">__itemTwo </a>
+                                    <a class="dropdown-item" href="#">__ItemThree </a> --}}{{--
                                     @endforelse
-                                
+
                                 </div>
-                                
+
                             </li>
                             <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a class="nav-link" href="{{route('theme.works.index')}}">{{lang('product')}}</a></li>
-                                                     
+
                             <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a class="nav-link" href="{{route('theme.posts.index')}}">{{lang('news')}}</a></li>
                             <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="250"><a class="nav-link" href="{{route('theme.abouts.index')}}">{{lang('about_us')}}</a></li>
-                            {{-- <li class="nav-item" data-aos="zoom-in" data-aos-delay="350"><a class="nav-link text-uppercase px-4 donate" href="{{route('theme.contacts.index')}}">{{lang('call_us')}}</a></li> --}}
+                            --}}{{-- <li class="nav-item" data-aos="zoom-in" data-aos-delay="350"><a class="nav-link text-uppercase px-4 donate" href="{{route('theme.contacts.index')}}">{{lang('call_us')}}</a></li> --}}{{--
                         </ul>
                     </div>
                 </div>
             </nav>
         </div>
-        </section>
+        </section>--}}
 
         {{--End NavBar --}}
 
@@ -189,16 +256,16 @@ $parts=App\Models\Part::limit(12)->latest()->get();
                             <div class="embed-responsive embed-responsive-1by1 rounded h-100">
                                 {!!setting()->map!!}
                             </div>
-                          
+
                         </div>
                     </div>
                     <div class="col-12 col-lg-3 social-networks">
                         <div class="d-flex flex-column justify-content-center align-items-center contact-dev">
                             <div><a class="facebook" href="{{setting()->face}}"><i class="fa fa-facebook fa-lg"></i></a><a class="twitter" href="{{setting()->twitter}}"><i class="fa fa-twitter fa-lg"></i></a><a class="google fa-lg" href="{{setting()->youtube}}"><i class="fa fa-youtube fa-lg"></i></a>
-                                
+
                                 <a class="linkedin fa-lg" href="{{setting()->linkedin}}"><i class="fa fa-linkedin fa-lg"></i>
                                 </a>
-                            
+
                             </div>
                             {{-- <div class="mt-4"><a class="contact-us" href="{{route('theme.contacts.index')}}">{{lang('call_us')}}</a></div> --}}
                             <div class="mt-2 pt-5"><a href="#" onclick="&quot;goTo(0);return false;&quot;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-64 0 512 512" width="1em" height="1em" fill="currentColor" data-bss-hover-animate="bounce" class="fa-2x">
@@ -208,14 +275,14 @@ $parts=App\Models\Part::limit(12)->latest()->get();
                         </div>
                     </div>
                 </div>
-             
-                
+
+
             </div>
             <div class=" footer-copyright">
-                    
+
                 <p><a style="font-size:bold " href="https://mada-company.com">© 2022 Copyright Mada company |For Programing And Media Services </a></p>
-           
-        
+
+
       </div>
         </footer>
     </section>

@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 use Filament\Forms\Components\Textarea;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class PostResource extends Resource
 {
@@ -41,7 +42,7 @@ class PostResource extends Resource
                       Forms\Components\TextInput::make('title_ar')->label('العنوان')->required(),
 
 
-                      Forms\Components\RichEditor::make('info_ar')->label('المقالة'),
+                      TinyEditor::make('info_ar')->label('المقالة'),
 
 
 
@@ -52,14 +53,14 @@ class PostResource extends Resource
                           $set('slug', Str::slug($state));
                       })->required(),
                       Forms\Components\TextInput::make('slug')->required(),
-                      Forms\Components\RichEditor::make('info_en')->label('المقالة'),
+                      TinyEditor::make('info_en')->label('المقالة'),
 
 
                   ]),
 
                   Forms\Components\Tabs\Tab::make('التركية')->schema([
                       Forms\Components\TextInput::make('title_tr')->label('العنوان'),
-                      Forms\Components\RichEditor::make('info_tr')->label('المقالة'),
+                      TinyEditor::make('info_tr')->label('المقالة'),
 
 
                   ]),

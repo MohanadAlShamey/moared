@@ -6,7 +6,7 @@
         <div class="carousel slide" data-ride="carousel" id="carousel-1" style="z-index: -5;">
             <div class="carousel-inner">
                 @foreach ($slider as $slide)
-                
+
                     <div class="carousel-item @if ($loop->first) active @endif  ">
                         <div class="jumbotron pulse animated hero-technology carousel-hero "
                             style="background-image: url('{{ $slide->getFirstMediaUrl('sliders') }}'); ">
@@ -62,7 +62,7 @@
                     @endif
 
                     <div class="col-sm-6 col-md-4">
-                       
+
                         <a href= {{route('theme.posts.show',$post)}}>
                         <div data-aos="fade-up" data-aos-duration="900" class="card-container-imagia">
                             <div class="card-imagia">
@@ -75,7 +75,8 @@
                                             {{ Str::limit($post->title, 25, '...') }}<br></h3>
                                         <p class="text-left subtitle-imagia my-4">{!! Str::limit($post->info, 100, '...') !!}<br></p>
                                         <div class="progres-bar mb-3"></div>
-                                        <div><a class="d-flex flex-row justify-content-end" href="news.html">
+                                        <div>
+                                            <a class="d-flex flex-row justify-content-end" href="news.html">
                                                 <p class="text-left subtitle-redmore">{{ lang('read_more') }}&nbsp;</p><svg
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="-32 0 512 512"
                                                     width="1em" height="1em" fill="currentColor"
@@ -85,7 +86,8 @@
                                                         d="M246.6 233.4l-160-160c-12.5-12.5-32.75-12.5-45.25 0s-12.5 32.75 0 45.25L178.8 256l-137.4 137.4c-12.5 12.5-12.5 32.75 0 45.25C47.63 444.9 55.81 448 64 448s16.38-3.125 22.62-9.375l160-160C259.1 266.1 259.1 245.9 246.6 233.4zM438.6 233.4l-160-160c-12.5-12.5-32.75-12.5-45.25 0s-12.5 32.75 0 45.25L370.8 256l-137.4 137.4c-12.5 12.5-12.5 32.75 0 45.25C239.6 444.9 247.8 448 256 448s16.38-3.125 22.62-9.375l160-160C451.1 266.1 451.1 245.9 438.6 233.4z">
                                                     </path>
                                                 </svg>
-                                            </a></div>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -139,7 +141,7 @@
                         data-filter="{{ $part->id }}">{{ $part->name }}&nbsp;</span>
                 @endforeach
 
-                {{-- <span 
+                {{-- <span
                 class="d-inline-block mx-3 position-relative" data-filter="2">App</span><span class="d-inline-block mx-3 position-relative" data-filter="3">icon&nbsp;</span> --}}
             </div>
 
