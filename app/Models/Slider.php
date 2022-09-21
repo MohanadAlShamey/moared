@@ -14,8 +14,8 @@ class Slider extends Model implements HasMedia
     protected $guarded = [];
 
 
-    
-    public function getInfoAttribute(): string
+
+    public function getInfoAttribute(): string|null
     {
         return $this->{"caption_".app()->getLocale()};
 

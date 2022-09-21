@@ -13,7 +13,7 @@ class Partner extends Model implements HasMedia
 
     protected $guarded=[];
 
-    public function getNameAttribute(): string
+    public function getNameAttribute(): string|null
     {
         return $this->{'name_'.app()->getLocale()};
     }

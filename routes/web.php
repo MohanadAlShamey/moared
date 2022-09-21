@@ -22,17 +22,15 @@ use App\Http\Controllers\Theme\WorksController;
 Route::get('/welcome', function () {
     return view('theme.index');
 });
-Route::get('/languages/{lang}',[IndexController::class,'change_lang'])->name('change.lang');
-Route::name('theme.')->middleware('locale')->group(function(){
-    Route::get('/',[IndexController::class,'index'])->name('index');
-    
-    Route::resource('/abouts',AboutController::class)->only('index');
-    // Route::resource('/contacts',ContactController::class)->only('index');
-    Route::resource('/posts',NewsController::class)->only(['index','show']);
-    Route::resource('/works',WorksController::class)->only('index','show');
-    Route::resource('/parts',PartController::class)->only('show');
- 
+Route::get('/languages/{lang}', [IndexController::class, 'change_lang'])->name('change.lang');
+Route::name('theme.')->middleware('locale')->group(function () {
+    Route::get('/', [IndexController::class, 'index'])->name('index');
 
+    Route::resource('/abouts', AboutController::class)->only('index');
+    Route::resource('/contacts', ContactController::class)->only('index','store');
+    Route::resource('/posts', NewsController::class)->only(['index', 'show']);
+    Route::resource('/works', WorksController::class)->only('index', 'show');
+    Route::resource('/parts', PartController::class)->only('show');
 });
 
 

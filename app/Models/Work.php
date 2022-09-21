@@ -14,12 +14,12 @@ class Work extends Model implements HasMedia
 
     protected $guarded=[];
 
-    public function getTitleAttribute(): string
+    public function getTitleAttribute(): string|null
     {
         return $this->{'title_'.app()->getLocale()};
     }
 
-    public function getInfoAttribute(): string
+    public function getInfoAttribute(): string|null
     {
         return $this->{'info_'.app()->getLocale()}??'';
     }

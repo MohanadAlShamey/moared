@@ -12,7 +12,7 @@ class Part extends Model
 
     protected $guarded=[];
 
-    public function getNameAttribute(): string
+    public function getNameAttribute(): string|null
     {
         return $this->{'name_' . app()->getLocale()};
 

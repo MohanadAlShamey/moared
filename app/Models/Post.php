@@ -20,12 +20,12 @@ class Post extends Model implements HasMedia
         return $this->belongsTo(Category::class);
     }
 
-    public function getTitleAttribute(): string
+    public function getTitleAttribute(): string|null
     {
         return $this->{'title_' . app()->getLocale()};
     }
 
-    public function getInfoAttribute(): string
+    public function getInfoAttribute(): string|null
     {
         return $this->{ 'info_' . app()->getLocale()};
     }

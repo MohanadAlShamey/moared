@@ -13,12 +13,12 @@ class Team extends Model implements HasMedia
 
     protected $guarded = [];
 
-    public function getNameAttribute(): string
+    public function getNameAttribute(): string|null
     {
         return $this->{'name_' . app()->getLocale()};
     }
 
-    public function getJobAttribute(): string
+    public function getJobAttribute(): string|null
     {
         return $this->{'job_' . app()->getLocale()};
     }

@@ -19,14 +19,14 @@ class Category extends Model implements HasMedia
         return $this->hasMany(Post::class);
     }
 
-    public function getNameAttribute(): string
+    public function getNameAttribute(): string|null
     {
         return $this->{"name_".app()->getLocale()};
 
 
     }
 
-    public function getInfoAttribute(): string
+    public function getInfoAttribute(): string|null
     {
         return $this->{"info_".app()->getLocale()};
 
