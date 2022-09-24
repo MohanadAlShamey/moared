@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col">
                     <div class="text-center py-3">
-                        <h1>{{lang('product')}} @if(isset($part)) - {{$part->name}}  @endif</h1>
+                        <h1>{{lang('service')}} @if(isset($part)) - {{$part->name}}  @endif</h1>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
 
 
 
-             
+
 
 
 

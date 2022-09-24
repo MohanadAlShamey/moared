@@ -5,7 +5,7 @@
     <section>
         <div class="container-fluid">
             <div class="row">
-                <div class="col">
+                <div class="col" style="z-index: -1000">
                     <div class="mine-image" style="background-image: url('{{$work->img}}');background-repeat: no-repeat;background-size: cover;"></div>
                 </div>
             </div>
