@@ -32,7 +32,7 @@ class SettingResource extends Resource
             ->schema([
                 Forms\Components\Section::make(self::$pluralLabel)->schema([
                     SpatieMediaLibraryFileUpload::make('img')->collection('settings')->label('الصورة'),
-                    SpatieMediaLibraryFileUpload::make('img')->collection('abouts')->label('صورة من نحن'),
+                    SpatieMediaLibraryFileUpload::make('about')->collection('abouts')->label('صورة من نحن'),
                     Forms\Components\Tabs::make('posts')->tabs([
 
                         Forms\Components\Tabs\Tab::make('العربية')->schema([

@@ -7,8 +7,8 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col">
-                <div class="mine-image" style="background: url({{setting()->img_about}}) center / cover no-repeat;"></div>
+            <div class="col" style="z-index: -1000">
+                <div class="mine-image" style="background: url({{setting()->ImgAbout}}) center / cover no-repeat;"></div>
             </div>
         </div>
     </div>
