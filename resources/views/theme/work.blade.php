@@ -3,13 +3,6 @@
 
 
     <section>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <hr>
-                </div>
-            </div>
-        </div>
         <div class="container-fluid">
             <div class="row">
                 <div class="col">

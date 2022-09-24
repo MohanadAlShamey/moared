@@ -4,17 +4,11 @@
 
 
 <section>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <hr>
-            </div>
-        </div>
-    </div>
+
     <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <div class="mine-image" style="background: url({{setting()->img}}) center / cover no-repeat;"></div>
+                <div class="mine-image" style="background: url({{setting()->img_about}}) center / cover no-repeat;"></div>
             </div>
         </div>
     </div>
@@ -29,8 +23,8 @@
                             @if(setting()->info!=null)
                     <p>{!!setting()->info!!}</p>
                     @endif
-                
-                
+
+
                 </div>
             </div>
         </div>

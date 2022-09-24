@@ -34,5 +34,12 @@ class Setting extends Model implements HasMedia
         return $this->{"info_".app()->getLocale()};
 
     }
+    public function getImgAboutAttribute(){
+        if($this->hasMedia('abouts')){
+            return $this->getFirstMediaUrl('abouts');
+        }
+
+    }
+
 
 }

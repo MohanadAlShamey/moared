@@ -32,6 +32,7 @@ class SettingResource extends Resource
             ->schema([
                 Forms\Components\Section::make(self::$pluralLabel)->schema([
                     SpatieMediaLibraryFileUpload::make('img')->collection('settings')->label('الصورة'),
+                    SpatieMediaLibraryFileUpload::make('img')->collection('abouts')->label('صورة من نحن'),
                     Forms\Components\Tabs::make('posts')->tabs([
 
                         Forms\Components\Tabs\Tab::make('العربية')->schema([
@@ -93,7 +94,7 @@ class SettingResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name_ar')->label('اسم الموقع'),
                 Tables\Columns\TextColumn::make('address_ar')->label('العنوان'),
-                Tables\Columns\TextColumn::make('map')->label('الخريطة')->html(),
+                //Tables\Columns\TextColumn::make('map')->label('الخريطة')->html(),
                 SpatieMediaLibraryImageColumn::make('الصورة')->collection('settings'),
             ])
             ->filters([
