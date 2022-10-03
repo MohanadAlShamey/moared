@@ -84,7 +84,7 @@
 
                         </li>
                         <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a
-                                class="nav-link" href="{{route('theme.works.index')}}">{{lang('product')}}</a></li>
+                                class="nav-link" href="{{route('theme.products.index')}}">{{lang('product')}}</a></li>
 
                         <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a
                                 class="nav-link" href="{{route('theme.posts.index')}}">{{lang('blog')}}</a></li>

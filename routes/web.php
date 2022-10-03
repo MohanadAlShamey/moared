@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Theme\AboutController;
 use App\Http\Controllers\Theme\ContactController;
+use App\Http\Controllers\Theme\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Theme\IndexController;
 use App\Http\Controllers\Theme\NewsController;
@@ -23,7 +24,7 @@ Route::get('/welcome', function () {
     return view('theme.index');
 });
 Route::get('/languages/{lang}', [IndexController::class, 'change_lang'])->name('change.lang');
-Route::name('theme.')->middleware('locale')->group(function () {
+Route::name('theme.')->middleware('locale')->group(callback: function () {
     Route::get('/', [IndexController::class, 'index'])->name('index');
 
     Route::resource('/abouts', AboutController::class)->only('index');
@@ -31,6 +32,7 @@ Route::name('theme.')->middleware('locale')->group(function () {
     Route::resource('/posts', NewsController::class)->only(['index', 'show']);
     Route::resource('/works', WorksController::class)->only('index', 'show');
     Route::resource('/parts', PartController::class)->only('show');
+    Route::resource('/products', ProductController::class)->only(['index','show']);
 });
 
 
