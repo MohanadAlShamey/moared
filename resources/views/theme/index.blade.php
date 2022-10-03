@@ -73,7 +73,7 @@
                                     <div class="content-imagia">
                                         <h3 class="text-left name-imagia text-uppercase text-dark my-2">
                                             {{ Str::limit($post->title, 25, '...') }}<br></h3>
-                                        <p class="text-left subtitle-imagia my-4">{!! Str::limit(strip_tags(htmlspecialchars_decode(($post->info)), 100, '...') !!}<br></p>
+                                        <p class="text-left subtitle-imagia my-4">{!! Str::limit(strip_tags(htmlspecialchars_decode($post->info)), 100, '...') !!}<br></p>
                                         <div class="progres-bar mb-3"></div>
                                         <div>
                                             <a class="d-flex flex-row justify-content-end" href="{{route('theme.posts.show',$post)}}">
