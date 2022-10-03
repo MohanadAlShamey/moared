@@ -34,7 +34,7 @@ class ContactController extends Controller
             ]));
             return redirect()->back()->with('send-email', '');
         }catch (\Exception |\Error $e){
-            dd($e->getMessage());
+           // dd($e->getMessage());
             return redirect()->back()->with('send-email-invalid', '');
         }
 
