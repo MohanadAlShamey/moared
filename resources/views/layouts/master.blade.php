@@ -66,7 +66,8 @@
 
 
                         <li class="nav-item dropdown px-3" data-aos="fade-left" data-aos-duration="450"
-                            data-aos-delay="50"><a class="dropdown-toggle nav-link" aria-expanded="false"
+                            data-aos-delay="50">
+                            <a class="dropdown-toggle nav-link" aria-expanded="false"
                                                    data-toggle="dropdown" href="#">{{lang('service')}}</a>
 
                             <div class="dropdown-menu">
@@ -81,6 +82,7 @@
                                         @endforelse
 
                                     </div>
+                            </div>
 
                         </li>
                         <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a
@@ -312,7 +314,7 @@
 
                         </div>
                         {{-- <div class="mt-4"><a class="contact-us" href="{{route('theme.contacts.index')}}">{{lang('call_us')}}</a></div> --}}
-                        <div class="mt-2 pt-5"><a href="#" onclick="&quot;goTo(0);return false;&quot;">
+                        <div class="mt-2 pt-5"><a href="#" onclick="goTo(0);return false">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-64 0 512 512" width="1em" height="1em"
                                      fill="currentColor" data-bss-hover-animate="bounce" class="fa-2x">
                                     <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
@@ -328,7 +330,7 @@
         </div>
         <div class=" footer-copyright">
 
-            <p><a style="font-size:bold " href="https://mada-company.com">© 2022 Copyright Mada company |For Programing
+            <p><a style="font-weight:bold " href="https://mada-company.com">© 2022 Copyright Mada company |For Programing
                     And Media Services </a></p>
 
 
