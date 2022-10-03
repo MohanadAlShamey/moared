@@ -30,7 +30,7 @@ protected static ?string $pluralLabel='قالوا عنا';
           return $form
               ->schema([
                   Forms\Components\Section::make(self::$pluralLabel)->schema([
-                      SpatieMediaLibraryFileUpload::make('img')->collection('testimonials')->label('الصورة'),
+//                      SpatieMediaLibraryFileUpload::make('img')->collection('testimonials')->label('الصورة'),
                       Forms\Components\Tabs::make('testimonials')->tabs([
 
                           Forms\Components\Tabs\Tab::make('العربية')->schema([
@@ -72,7 +72,7 @@ protected static ?string $pluralLabel='قالوا عنا';
               Tables\Columns\TextColumn::make('name_ar')->label('اسم الجهة'),
               Tables\Columns\TextColumn::make('info_ar')->label('المقالة')->limit(40),
 
-                SpatieMediaLibraryImageColumn::make('الصورة')->collection('testimonials'),
+//                SpatieMediaLibraryImageColumn::make('الصورة')->collection('testimonials'),
             ])
             ->filters([
                 //
