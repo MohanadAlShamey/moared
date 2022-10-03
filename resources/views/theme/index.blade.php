@@ -76,7 +76,7 @@
                                         <p class="text-left subtitle-imagia my-4">{!! Str::limit(addcslashes($post->info), 100, '...') !!}<br></p>
                                         <div class="progres-bar mb-3"></div>
                                         <div>
-                                            <a class="d-flex flex-row justify-content-end" href="news.html">
+                                            <a class="d-flex flex-row justify-content-end" href="{{route('theme.posts.show',$post)}}">
                                                 <p class="text-left subtitle-redmore">{{ lang('read_more') }}&nbsp;</p><svg
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="-32 0 512 512"
                                                     width="1em" height="1em" fill="currentColor"
@@ -292,7 +292,7 @@
                     <div class="col-md-6 col-lg-3">
                         <div data-aos="fade-up" data-aos-duration="400" class="card card-style2 team-card p-3">
                             <div class="card_img"><img class="img-fluid img-full loaded"
-                                    data-original={{ $team->img }} data-was-processed="true" src={{ $team->img }}
+                                    data-original="{{ $team->img }}" data-was-processed="true" src="{{ $team->img }}"
                                     alt="Team one">
                                 <div class="hover-overlay effect-scale">
                                     <a class="overlay_icon" href="mailto:{{ $team->email }}"><i
