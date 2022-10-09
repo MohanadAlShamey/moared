@@ -149,7 +149,7 @@
             <div class="row filtr-container @if(app()->getLocale()=='ar') justify-content-end @endif" >
                 @foreach ($works as $work)
                     <div  class="col-sm-12 col-md-6 col-lg-4 col-xl-4 filtr-item" data-category="{{ $work->part_id }}"><a
-                            href="news.html">
+                            href="{{route('theme.works.show',$work)}}">
                             <div class="card cards-shadown cards-hover" data-aos="flip-right" data-aos-duration="950">
                                 <div class="card-header" style="background-image: url('{{ $work->img }}')">
                                     <div class="cardheader-text"></div>
