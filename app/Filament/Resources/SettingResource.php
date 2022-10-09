@@ -16,6 +16,7 @@ use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class SettingResource extends Resource
 {
@@ -41,7 +42,7 @@ class SettingResource extends Resource
 
 
                             Forms\Components\TextInput::make('address_ar')->label('العنوان'),
-                            Forms\Components\RichEditor::make('info_ar')->label('من نحن'),
+                            TinyEditor::make('info_ar')->label('من نحن'),
 
 
                         ]),
@@ -51,7 +52,7 @@ class SettingResource extends Resource
 
 
                             Forms\Components\TextInput::make('address_en')->label('العنوان'),
-                            Forms\Components\RichEditor::make('info_en')->label('من نحن'),
+                            TinyEditor::make('info_en')->label('من نحن'),
 
                         ]),
 
@@ -61,7 +62,7 @@ class SettingResource extends Resource
 
                             Forms\Components\TextInput::make('address_tr')->label('العنوان'),
 
-                            Forms\Components\RichEditor::make('info_tr')->label('من نحن'),
+                            TinyEditor::make('info_tr')->label('من نحن'),
                         ]),
 
                         Forms\Components\Tabs\Tab::make('وسائل التواصل')->schema([
