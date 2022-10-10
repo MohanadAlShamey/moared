@@ -33,7 +33,7 @@ class PostResource extends Resource
         return $form
             ->schema([
           Forms\Components\Section::make(self::$pluralLabel)->schema([
-              SpatieMediaLibraryFileUpload::make('img')->collection('posts')->label('الصورة'),
+              SpatieMediaLibraryFileUpload::make('img')->collection('posts')->label('الصورة')->imageCropAspectRatio('6:2'),
               Forms\Components\BelongsToSelect::make('category_id')->relationship('category','name_ar')->label('القسم'),
               TextArea::make('video')->nullable()->label('فيديو من يوتيوب'),
               Forms\Components\Tabs::make('posts')->tabs([

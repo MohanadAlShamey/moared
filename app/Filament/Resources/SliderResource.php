@@ -30,9 +30,9 @@ class SliderResource extends Resource
             ->schema([
                 Forms\Components\Section::make('')->schema([
                     SpatieMediaLibraryFileUpload::make('img')->collection('sliders')->label('الصورة'),
-                    Forms\Components\Textarea::make('caption_ar')->label('الوصف باللغة العربية'),
-                    Forms\Components\Textarea::make('caption_en')->label('الوصف باللغة الإنكليزية'),
-                    Forms\Components\Textarea::make('caption_tr')->label('الوصف باللغة التركية'),
+                    Forms\Components\Textarea::make('caption_ar')->label('الوصف باللغة العربية')->nullable(),
+                    Forms\Components\Textarea::make('caption_en')->label('الوصف باللغة الإنكليزية')->nullable(),
+                    Forms\Components\Textarea::make('caption_tr')->label('الوصف باللغة التركية')->nullable(),
 
 
                 ])

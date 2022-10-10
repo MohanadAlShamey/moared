@@ -65,24 +65,46 @@
                                 class="nav-link nav-link" href="{{route('theme.index')}}">{{lang('home')}}</a></li>
 
 
-                        <li class="nav-item dropdown px-3" data-aos="fade-left" data-aos-duration="450"
-                            data-aos-delay="50"><a class="dropdown-toggle nav-link" aria-expanded="false"
-                                                   data-toggle="dropdown" href="#">{{lang('service')}}</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                               aria-expanded="false">
+                                {{lang('service')}}
+                            </a>
+                            @if($parts->count()>0)
+                                <div class="dropdown-menu">
+                                    @foreach($parts as $part)
+                                        <a class="dropdown-item"
+                                           href="{{route('theme.parts.show',$part)}}">{{$part->name}}</a>
 
-                            <div class="dropdown-menu">
-                                @forelse($parts as $part)
-                                    <a class="dropdown-item"
-                                       href="{{route('theme.parts.show',$part)}}">{{$part->name}} </a>
-                                @empty
-                                    <a class="dropdown-item" href="#">No Data </a>
 
-                                        {{-- <a class="dropdown-item" href="#">__itemTwo </a>
-                                        <a class="dropdown-item" href="#">__ItemThree </a> --}}
-                                        @endforelse
+                                    @endforeach
 
-                            </div>
-
+                                </div>
+                                @endif
                         </li>
+
+
+                        {{--                        --}}
+                        {{--                        <li class="nav-item dropdown px-3" data-aos="fade-left" data-aos-duration="450"--}}
+                        {{--                            data-aos-delay="50"><a class="dropdown-toggle nav-link" aria-expanded="false"--}}
+                        {{--                                                   data-toggle="dropdown" href="#">{{lang('service')}}</a>--}}
+
+                        {{--                            <div class="dropdown-menu" style="z-index: 10000">--}}
+                        {{--                                @forelse($parts as $part)--}}
+                        {{--                                    <a class="dropdown-item"--}}
+                        {{--                                       href="{{route('theme.parts.show',$part)}}">{{$part->name}} </a>--}}
+                        {{--                                @empty--}}
+                        {{--                                    <a class="dropdown-item" href="#">No Data </a>--}}
+
+                        {{--                                        --}}{{-- <a class="dropdown-item" href="#">__itemTwo </a>--}}
+                        {{--                                        <a class="dropdown-item" href="#">__ItemThree </a> --}}
+                        {{--                                        @endforelse--}}
+
+                        {{--                            </div>--}}
+
+                        {{--                        </li>--}}
+
+                        {{--                        --}}
                         <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a
                                 class="nav-link" href="{{route('theme.products.index')}}">{{lang('product')}}</a></li>
 
@@ -328,7 +350,8 @@
         </div>
         <div class=" footer-copyright">
 
-            <p><a style="font-weight:bold " href="https://mada-company.com">© 2022 Copyright Mada company |For Programing
+            <p><a style="font-weight:bold " href="https://mada-company.com">© 2022 Copyright Mada company |For
+                    Programing
                     And Media Services </a></p>
 
 
