@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Category;
+use App\Models\Lang;
 use App\Models\Post;
 use Illuminate\Database\Seeder;
 
@@ -26,5 +27,7 @@ class DatabaseSeeder extends Seeder
         // ]);
       //  $this->call(AdminSeeder::class);
         $this->call(SettingSeeder::class);
+        $this->call(AdminSeeder::class);
+        $this->call(LangSeeder::class);
     }
 }
