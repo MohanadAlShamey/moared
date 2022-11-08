@@ -6,7 +6,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col" style="z-index: -1000">
-                    <div class="mine-image" style="background-image: url('{{$work->img}}');background-repeat: no-repeat;background-size: cover;"></div>
+                    <div class="mine-image" >
+                        <img src="{{$work->img}}" alt="{{$work->title}}">
+                    </div>
                 </div>
             </div>
         </div>
