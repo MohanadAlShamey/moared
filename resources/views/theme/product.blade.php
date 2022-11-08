@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col" style="z-index: -1000">
-                    <div class="mine-image" style="background-image: url('');background-repeat: no-repeat;background-size:  contain, cover; background-position: center"></div>
+                    <div class="mine-image" style="background-image: url('{{$product->img}}');background-repeat: no-repeat;background-size:  contain, cover; background-position: center"></div>
                 </div>
             </div>
         </div>
